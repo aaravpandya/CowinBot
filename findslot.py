@@ -7,14 +7,14 @@ url_session = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByD
 url_getReCaptcha = "https://cdn-api.co-vin.in/api/v2/auth/getRecaptcha"
 url_schedule = "https://cdn-api.co-vin.in/api/v2/appointment/schedule"
 edgepath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
-beneficiaries = ["27388712323730"]
+beneficiaries = ["ID_HERE"]
 slot_index = 0
-
+Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI5NTFlNWVlOS03NDAzLTQwMWMtOGUyYy01Zjg5ZWJhYzdkYTQiLCJ1c2VyX2lkIjoiOTUxZTVlZTktNzQwMy00MDFjLThlMmMtNWY4OWViYWM3ZGE0IiwidXNlcl90eXBlIjoiQkVORUZJQ0lBUlkiLCJtb2JpbGVfbnVtYmVyIjo5ODk4Mjk4NjAzLCJiZW5lZmljaWFyeV9yZWZlcmVuY2VfaWQiOjI3Mzg4NzEyMzIzNzMwLCJzZWNyZXRfa2V5IjoiYjVjYWIxNjctNzk3Ny00ZGYxLTgwMjctYTYzYWExNDRmMDRlIiwidWEiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTAuMC40NDMwLjkzIFNhZmFyaS81MzcuMzYgRWRnLzkwLjAuODE4LjU2IiwiZGF0ZV9tb2RpZmllZCI6IjIwMjEtMDUtMDlUMTU6MTA6MjEuMDM2WiIsImlhdCI6MTYyMDU3MzAyMSwiZXhwIjoxNjIwNTczOTIxfQ._6WbTO3vOmukAXalo-1H_CJl0fa-eMm7sRvysQaJOX0"
+path_to_html = "ABSOLUTE_PATH_HERE" # Not sure if relative works 
 
 webbrowser.register('edge', None, webbrowser.BackgroundBrowser(edgepath))
 edge = webbrowser.get("edge")
 payload={}
-Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI5NTFlNWVlOS03NDAzLTQwMWMtOGUyYy01Zjg5ZWJhYzdkYTQiLCJ1c2VyX2lkIjoiOTUxZTVlZTktNzQwMy00MDFjLThlMmMtNWY4OWViYWM3ZGE0IiwidXNlcl90eXBlIjoiQkVORUZJQ0lBUlkiLCJtb2JpbGVfbnVtYmVyIjo5ODk4Mjk4NjAzLCJiZW5lZmljaWFyeV9yZWZlcmVuY2VfaWQiOjI3Mzg4NzEyMzIzNzMwLCJzZWNyZXRfa2V5IjoiYjVjYWIxNjctNzk3Ny00ZGYxLTgwMjctYTYzYWExNDRmMDRlIiwidWEiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTAuMC40NDMwLjkzIFNhZmFyaS81MzcuMzYgRWRnLzkwLjAuODE4LjU2IiwiZGF0ZV9tb2RpZmllZCI6IjIwMjEtMDUtMDlUMTU6MTA6MjEuMDM2WiIsImlhdCI6MTYyMDU3MzAyMSwiZXhwIjoxNjIwNTczOTIxfQ._6WbTO3vOmukAXalo-1H_CJl0fa-eMm7sRvysQaJOX0"
 headers = {
   'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Microsoft Edge";v="90"',
   'Accept': 'application/json, text/plain, */*',
@@ -76,9 +76,9 @@ while(True):
         with open("template.html",'r') as fp:
             html = fp.read()
         html = html.replace("Token", svg)
-        with open("index.html",'w') as fp:
+        with open(path_to_html,'w') as fp:
             fp.write(html)
-        edge.open_new_tab("C:\\Users\\pandy\\Dev\\Cowin\\index.html")
+        edge.open_new_tab(path_to_html)
         captcha = input()
         schedule(center_id,captcha,session_id,slots)
         break
