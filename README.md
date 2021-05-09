@@ -19,4 +19,6 @@ Script runs infinite loop; as soon as it finds a slot it opens a captcha for you
  - Slot_index is 0 by default. In my city i get options for 4 slot timings. But it can vary I guess. You can try setting it to a different time if thats what you want. But that can be error prone as maybe the array returned doesnt have that many values.
  - Understand the time when you want to run the script. In my city, slots generally open around 5 PM. I would start running this around  4:58. Do prep before hand.
  - Dont mess with headers. Seems like they try to do validation for user agent. 
+ - Was able to book a slot in what seemed like 2-5 seconds. Depends on your computer and internet speed as well.
+ - Let me know if this works out for you.
  - Good luck 👍.
