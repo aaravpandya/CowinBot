@@ -1,10 +1,12 @@
 # CowinBot
 The goal is to automate taps/clicks. You cannot bypass captcha and that still slows you down. 
 
-You will need the following before running the script. Use the network tools on your browser to get them. 
+You will need to edit the following before running the script. Use the network tools on your browser to get them. 
 
  - Bearer token ( in authorization header )
  - Beneficiary id (after login there is a beneficiary call. inspect it.)
+ - District id (search for your city and inspect it.)
+ - Also remember to change date.
  - Absolute path to a html file. Just make one. 
 
 Put them in the script and run. 
