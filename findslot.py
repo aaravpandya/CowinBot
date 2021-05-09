@@ -3,14 +3,16 @@ import json
 import webbrowser
 
 """ PARAMETERS """
-url_session = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?district_id=169&date=09-05-2021"
+district_id = "773"
+date = "09-05-2021"
+url_session = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?district_id="+district_id+"&date="+date
 url_getReCaptcha = "https://cdn-api.co-vin.in/api/v2/auth/getRecaptcha"
 url_schedule = "https://cdn-api.co-vin.in/api/v2/appointment/schedule"
 edgepath = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 beneficiaries = ["ID_HERE"]
 slot_index = 0
-Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiI5NTFlNWVlOS03NDAzLTQwMWMtOGUyYy01Zjg5ZWJhYzdkYTQiLCJ1c2VyX2lkIjoiOTUxZTVlZTktNzQwMy00MDFjLThlMmMtNWY4OWViYWM3ZGE0IiwidXNlcl90eXBlIjoiQkVORUZJQ0lBUlkiLCJtb2JpbGVfbnVtYmVyIjo5ODk4Mjk4NjAzLCJiZW5lZmljaWFyeV9yZWZlcmVuY2VfaWQiOjI3Mzg4NzEyMzIzNzMwLCJzZWNyZXRfa2V5IjoiYjVjYWIxNjctNzk3Ny00ZGYxLTgwMjctYTYzYWExNDRmMDRlIiwidWEiOiJNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvOTAuMC40NDMwLjkzIFNhZmFyaS81MzcuMzYgRWRnLzkwLjAuODE4LjU2IiwiZGF0ZV9tb2RpZmllZCI6IjIwMjEtMDUtMDlUMTU6MTA6MjEuMDM2WiIsImlhdCI6MTYyMDU3MzAyMSwiZXhwIjoxNjIwNTczOTIxfQ._6WbTO3vOmukAXalo-1H_CJl0fa-eMm7sRvysQaJOX0"
-path_to_html = "ABSOLUTE_PATH_HERE" # Not sure if relative works 
+Token = "TOKEN_HERE"
+path_to_html = "ABSOLUTE_PATH_TO_HTML" # Not sure if relative works 
 
 webbrowser.register('edge', None, webbrowser.BackgroundBrowser(edgepath))
 edge = webbrowser.get("edge")
@@ -29,8 +31,9 @@ def checkSessions():
     response = json.loads(response.text)
     for center in response["centers"]:
         for session in center["sessions"]:
-            if(session["available_capacity"]>0):
-                return True, center["center_id"], session["session_id"], session["slots"]
+            if(session["available_capacity"]>0 and session["min_age_limit"]==18):
+                return [True, center["center_id"], session["session_id"], session["slots"]]
+    return []
 
 def getRecaptcha():
     payload = json.dumps({})
@@ -82,6 +85,3 @@ while(True):
         captcha = input()
         schedule(center_id,captcha,session_id,slots)
         break
-
-
-
