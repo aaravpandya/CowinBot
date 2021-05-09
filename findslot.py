@@ -33,7 +33,7 @@ def checkSessions():
         for session in center["sessions"]:
             if(session["available_capacity"]>0 and session["min_age_limit"]==18):
                 return [True, center["center_id"], session["session_id"], session["slots"]]
-    return []
+    return [False,None,None,None]
 
 def getRecaptcha():
     payload = json.dumps({})
