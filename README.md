@@ -1,15 +1,20 @@
+
 # CowinBot
 The goal is to automate taps/clicks. You cannot bypass captcha and that still slows you down. 
 
-You will need to edit the following before running the script. Use the network tools on your browser to get them. 
+You will need to edit the following before running the script. Use the network tools (learn how to use it [here](https://developer.chrome.com/docs/devtools/network/)) on your browser to get them. Press F12 (if it doesnt work, use FN + F12) to get the network tools before you start login.
 
  - Bearer token ( in authorization header )
- - Beneficiary id (after login there is a beneficiary call. inspect it.)
+	 - Just login and see the call to benefeciaries. Switch to headers in the details and look for authorization header in request headers. Screenshot below. You need to copy in between the brackets -
+	 ![enter image description here](https://raw.githubusercontent.com/aaravpandya/CowinBot/main/images/Auth.JPG)
+ - Beneficiary id (after login there is a beneficiary call. inspect it.) 
+   ![enter image description here](https://github.com/aaravpandya/CowinBot/blob/main/images/bene_id.JPG?raw=true)
  - District id (search for your city and inspect it.)
+ ![enter image description here](https://raw.githubusercontent.com/aaravpandya/CowinBot/main/images/district_id.JPG)
  - Also remember to change date.
- - Absolute path to a html file. Just make one. 
+ - Absolute path to a html file. Just make an html file.
 
-Put them in the script and run. 
+Put them in the script and run. ([learn](https://realpython.com/run-python-scripts/) how to run python scripts)
 
 Script runs infinite loop; as soon as it finds a slot it opens a captcha for you in an edge window. Solve the captcha and enter it in the command line. That is the only human input required and thus the only pain point in the process.
 
